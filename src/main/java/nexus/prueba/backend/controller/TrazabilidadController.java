@@ -21,7 +21,7 @@ public class TrazabilidadController {
 	@Autowired
 	TrazabilidadService trazaServ;
 	
-	@CrossOrigin(origins={"http://localhost:4200"})
+	@CrossOrigin(origins={"http://localhost:8081"})
 	@RequestMapping(method=RequestMethod.POST,path="/new")
 	public ResponseEntity<Trazabilidad> saveTrazabilidad(@RequestBody Trazabilidad traza){
 		try{
@@ -32,7 +32,7 @@ public class TrazabilidadController {
 		}
 	}
 	
-	@CrossOrigin(origins={"http://localhost:4200"})
+	@CrossOrigin(origins={"http://localhost:8081"})
 	@RequestMapping(method=RequestMethod.PUT,path="/update")
 	public ResponseEntity<Trazabilidad> updateTrazabilidad(@RequestBody Trazabilidad traza){
 		try{
@@ -42,7 +42,7 @@ public class TrazabilidadController {
 		}
 	}
 	
-	@CrossOrigin(origins={"http://localhost:4200"})
+	@CrossOrigin(origins={"http://localhost:8081"})
 	@RequestMapping(method=RequestMethod.GET,path="/all")
 	public ResponseEntity<List<Trazabilidad>> getAllTrazabilidad(){
 		try{

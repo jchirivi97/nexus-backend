@@ -13,4 +13,8 @@ public interface ProductoService {
 	Producto updateProducto(Producto producto) throws NexusException;
 	
 	Producto deleteProducto(Producto producto) throws NexusException;
+	
+	List<Producto> getProductCreate(int usuario) throws NexusException;
+	
+	
 }

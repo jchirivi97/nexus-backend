@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -21,7 +22,7 @@ public class ProductoController {
 	@Autowired
 	ProductoService prodServ;
 	
-	@CrossOrigin(origins={"http://localhost:4200"})
+	@CrossOrigin(origins={"http://localhost:8081"})
 	@RequestMapping(method=RequestMethod.POST,path="/new")
 	public ResponseEntity<Producto> saveProduct(@RequestBody Producto producto){
 		try{
@@ -31,7 +32,7 @@ public class ProductoController {
 		}
 	}
 	
-	@CrossOrigin(origins={"http://localhost:4200"})
+	@CrossOrigin(origins={"http://localhost:8081"})
 	@RequestMapping(method=RequestMethod.GET,path="/all")
 	public ResponseEntity<List<Producto>> getAllProducts(){
 		try{
@@ -41,18 +42,30 @@ public class ProductoController {
 		}
 	}
 	
-	@CrossOrigin(origins={"http://localhost:4200"})
+	@CrossOrigin(origins={"http://localhost:8081"})
+	@RequestMapping(method=RequestMethod.GET,path="/user/{id}")
+	public ResponseEntity<List<Producto>> getAllProductsCreate(@PathVariable(value="id") int id){
+		try{
+			System.out.print("dfsdfsdfsd");
+			return ResponseEntity.ok(prodServ.getProductCreate(id));
+		}catch(Exception ex){
+			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+		}
+	}
+	
+	@CrossOrigin(origins={"http://localhost:8081"})
 	@RequestMapping(method=RequestMethod.PUT,path="/update")
 	public ResponseEntity<Producto> updateProduct(@RequestBody Producto producto){
 		try{
+			System.out.print("dfdsfsdf "+ producto.getFecha());
 			return ResponseEntity.ok(prodServ.updateProducto(producto));
 		}catch(Exception ex){
 			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		}
 	}
 	
-	@CrossOrigin(origins={"http://localhost:4200"})
-	@RequestMapping(method=RequestMethod.DELETE,path="/delete")
+	@CrossOrigin(origins={"http://localhost:8081"})
+	@RequestMapping(method=RequestMethod.POST,path="/delete")
 	public ResponseEntity<Producto> deleteProduct(@RequestBody Producto producto){
 		try{
 			return ResponseEntity.ok(prodServ.deleteProducto(producto));

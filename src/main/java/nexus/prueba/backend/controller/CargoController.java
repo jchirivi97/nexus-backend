@@ -22,7 +22,7 @@ public class CargoController {
 	@Autowired
 	CargoService cargoServ;
 	
-	@CrossOrigin(origins={"http://localhost:4200"})
+	@CrossOrigin(origins={"http://localhost:8081"})
 	@RequestMapping(method=RequestMethod.POST,path="/new")
 	public ResponseEntity<Cargo> saveProduct(@RequestBody Cargo cargo){
 		try{
@@ -32,7 +32,7 @@ public class CargoController {
 		}
 	}
 	
-	@CrossOrigin(origins={"http://localhost:4200"})
+	@CrossOrigin(origins={"http://localhost:8081"})
 	@RequestMapping(method=RequestMethod.GET,path="/all")
 	public ResponseEntity<List<Cargo>> getAllCargos(){
 		try{
@@ -42,7 +42,7 @@ public class CargoController {
 		}
 	}
 	
-	@CrossOrigin(origins={"http://localhost:4200"})
+	@CrossOrigin(origins={"http://localhost:8081"})
 	@RequestMapping(method=RequestMethod.PUT,path="/update")
 	public ResponseEntity<Cargo> updateProduct(@RequestBody Cargo cargo){
 		try{
@@ -52,7 +52,7 @@ public class CargoController {
 		}
 	}
 	
-	@CrossOrigin(origins={"http://localhost:4200"})
+	@CrossOrigin(origins={"http://localhost:8081"})
 	@RequestMapping(method=RequestMethod.DELETE,path="/delete")
 	public ResponseEntity<Cargo> deleteProduct(@RequestBody Cargo cargo){
 		try{

@@ -53,6 +53,7 @@ public class ProductoServiceImpl implements ProductoService{
 	@Override
 	public Producto updateProducto(Producto producto) throws NexusException {
 		try{
+			//prodPers.updateProducto(producto.getIdproducto(),producto.getCantidad(),producto.getFecha(),producto.getNombre());
 			prodPers.save(producto);
 			return producto;
 		}catch(Exception ex){
@@ -68,8 +69,19 @@ public class ProductoServiceImpl implements ProductoService{
 	@Override
 	public Producto deleteProducto(Producto producto) throws NexusException {
 		try{
+			prodPers.deleteTraza(producto.getIdproducto());
 			prodPers.delete(producto);
 			return producto;
+		}catch(Exception ex){
+			throw new NexusException(ex.getMessage(),ex);
+		}
+	}
+
+	@Override
+	public List<Producto> getProductCreate(int usuario) throws NexusException {
+		try{
+			System.out.print("xcdsvxcvcv:  ");
+			return prodPers.getProductCreate(usuario);
 		}catch(Exception ex){
 			throw new NexusException(ex.getMessage(),ex);
 		}
